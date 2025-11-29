@@ -141,13 +141,14 @@ echo -e "${BLUE}[8/8]${RESET} Installing desktop launcher..."
 DESKTOP_DIR="$HOME/.local/share/applications"
 mkdir -p "$DESKTOP_DIR"
 
-cat > "$DESKTOP_DIR/claudestrike.desktop" << 'EOF'
+# Use current user's home directory dynamically
+cat > "$DESKTOP_DIR/claudestrike.desktop" << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=ClaudeStrike AI Terminal Emulator
 Comment=AI-powered pentesting assistant with MCP
-Exec=/bin/zsh -i -c "/home/kali/claudestrike/start_claudestrike.sh; exec zsh"
+Exec=/bin/zsh -i -c "$HOME/claudestrike/start_claudestrike.sh; exec zsh"
 Icon=/usr/share/icons/Tango/scalable/apps/terminal.svg
 Terminal=true
 Categories=System;Security;ConsoleOnly;
