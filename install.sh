@@ -151,7 +151,7 @@ Comment=AI-powered pentesting assistant with MCP
 Exec=/bin/zsh -i -c "$HOME/claudestrike/start_claudestrike.sh; exec zsh"
 Icon=/usr/share/icons/Tango/scalable/apps/terminal.svg
 Terminal=true
-Categories=System;Security;ConsoleOnly;
+Categories=kali-resource-development;System;Security;
 StartupNotify=true
 EOF
 

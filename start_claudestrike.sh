@@ -240,6 +240,24 @@ if [ "$choice" = "8" ]; then
     fi
 fi
 
+# Handle update option
+if [ "$choice" = "8" ]; then
+    echo ""
+    if [ -f "$HOME/claudestrike/update.sh" ]; then
+        bash "$HOME/claudestrike/update.sh"
+        echo ""
+        echo "✅ Update complete! Restart ClaudeStrike to continue."
+        exit 0
+    else
+        echo "❌ Update script not found!"
+        echo "Reinstall ClaudeStrike from:"
+        echo "  https://github.com/ChrisBurkett/ClaudeStrike"
+        exit 1
+    fi
+fi
+
+# Handle quit option
+
 # Handle quit option
 if [ "$choice" = "4" ]; then
     echo ""
