@@ -15,14 +15,14 @@ By: Christopher M. Burkett (ChrisFightsFun)
 
 ## Quick Install
 ```bash
-curl -sSL https://raw.githubusercontent.com/ChrisBurkett/ClaudeStrike/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/ChrisBurkett/claudestrike/main/install.sh | bash
 ```
 
 ## Manual Install
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ChrisBurkett/ClaudeStrike.git ~/claudestrike
+git clone https://github.com/ChrisBurkett/claudestrike.git ~/claudestrike
 cd ~/claudestrike
 ```
 

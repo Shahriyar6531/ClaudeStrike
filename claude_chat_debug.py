@@ -3,7 +3,7 @@
 ClaudeStrike with MCP Integration for Kali Linux (DEBUG VERSION)
 Usage: python claude_chat_debug.py [--mcp] [--mcp-server URL]
 By: Christopher M. Burkett DBA: ChrisFightsFun
-GitHub: https://github.com/ChrisBurkett/ClaudeStrike
+GitHub: https://github.com/ChrisBurkett/claudestrike
 """
 
 import anthropic
@@ -207,15 +207,40 @@ class ClaudeStrike:
         print(f"{Colors.YELLOW}  └─{Colors.RESET} Command output preview shown")
         
         print(f"\n{Colors.BOLD}  Commands:{Colors.RESET}")
-        print(f"  • Type 'quit' or 'exit' to leave")
-        print(f"  • Type 'clear' to clear conversation history")
-        print(f"\n{Colors.BOLD}{Colors.GREEN}{'─'*60}{Colors.RESET}\n")
+        print(f"  • 'runlocal <command>' - Execute command locally without AI analysis")
+        print(f"  • 'runclaude <command>' - AI executes and analyzes the command")
+        print(f"  • 'quit' or 'exit' - Leave ClaudeStrike")
+        print(f"  • 'clear' - Clear conversation history")
         
         while True:
             try:
                 user_input = input(f"{Colors.BOLD}{Colors.BLUE}You:{Colors.RESET} ").strip()
                 
                 if not user_input:
+                    continue
+                
+                # Handle runlocal command
+                if user_input.lower().startswith("runlocal "):
+                    command = user_input[9:].strip()
+                    if self.mcp and self.mcp.enabled:
+                        result = self.run_command(command)
+                        print(f"\n{Colors.BOLD}Output:{Colors.RESET}\n{result}")
+                    else:
+                        print_error("MCP not connected. Cannot execute commands.")
+                    continue
+                
+                # Handle runclaude command
+                if user_input.lower().startswith("runclaude "):
+                    command = user_input[10:].strip()
+                    if self.mcp and self.mcp.enabled:
+                        enhanced_prompt = (
+                            f"You have MCP API access to my Kali Linux system. "
+                            f"Execute this command and analyze the output: {command}"
+                        )
+                        response = self.chat(enhanced_prompt)
+                        print_claude(response)
+                    else:
+                        print_error("MCP not connected. Cannot execute commands.")
                     continue
                 
                 if user_input.lower() in ['quit', 'exit', 'q']:

@@ -2,7 +2,7 @@
 #===============================================================================
 # ClaudeStrike Installer for Kali Linux
 # By: Christopher M. Burkett DBA: ChrisFightsFun
-# GitHub: https://github.com/ChrisBurkett/ClaudeStrike
+# GitHub: https://github.com/ChrisBurkett/claudestrike
 #===============================================================================
 
 set -e  # Exit on any error
@@ -16,7 +16,7 @@ BOLD='\033[1m'
 RESET='\033[0m'
 
 INSTALL_DIR="$HOME/claudestrike"
-REPO_URL="https://github.com/ChrisBurkett/ClaudeStrike"
+REPO_URL="https://github.com/ChrisBurkett/claudestrike"
 
 echo ""
 echo -e "${BOLD}${GREEN}╔════════════════════════════════════════════════════════════╗${RESET}"
@@ -219,7 +219,7 @@ echo -e "${BOLD}🔑 Next Steps:${RESET}"
 echo "   1. Get your Anthropic API key from: https://console.anthropic.com"
 echo "   2. Launch ClaudeStrike (it will prompt for your API key)"
 echo ""
-echo -e "${BOLD}📚 Documentation:${RESET} https://github.com/ChrisBurkett/ClaudeStrike"
+echo -e "${BOLD}📚 Documentation:${RESET} https://github.com/ChrisBurkett/claudestrike"
 echo ""
 echo -e "${GREEN}Happy hacking! 🔐⚡${RESET}"
 echo ""
