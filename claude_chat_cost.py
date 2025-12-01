@@ -293,13 +293,29 @@ Be concise and focus on actionable information."""
                         print_error("MCP not connected. Cannot execute commands.")
                     continue
                 
-                # Handle runclaude command
+               # Handle runclaude command
                 if user_input.lower().startswith("runclaude "):
                     command = user_input[10:].strip()
                     if self.mcp and self.mcp.enabled:
+                        # Execute the command first
+                        print_tool(f"Executing: {command}")
+                        result = self.run_command(command)
+                        
+                        # Show the raw output
+                        print(f"\n{Colors.BOLD}Command Output:{Colors.RESET}")
+                        print(result)
+                        print("")
+                        
+                        # Now ask Claude to analyze
                         enhanced_prompt = (
-                            f"You have MCP API access to my Kali Linux system. "
-                            f"Execute this command, return the command you run, then the output, last analyze the output and provide insights, findings, recommendations. Lable each section and remember you work in security: {command}"
+                            f"I just executed this command on my Kali Linux system:\n\n"
+                            f"Command: {command}\n\n"
+                            f"Output:\n{result}\n\n"
+                            f"Please provide your analysis in sections:\n"
+                            f"1. Summary of findings\n"
+                            f"2. Key insights and observations\n"
+                            f"3. Security implications (if any)\n"
+                            f"4. Recommendations or next steps"
                         )
                         response = self.chat(enhanced_prompt)
                         print_claude(response)
