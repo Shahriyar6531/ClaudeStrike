@@ -49,8 +49,14 @@ echo -e "${GREEN}✓ Backup saved to: $BACKUP_DIR${RESET}"
 echo -e "${BLUE}Checking for updates...${RESET}"
 git fetch origin
 
-LOCAL=$(git rev-parse @)
-REMOTE=$(git rev-parse @{u})
+LOCAL=$(git rev-parse @ 2>/dev/null || echo "")
+REMOTE=$(git rev-parse @{u} 2>/dev/null || echo "")
+
+if [ -z "$LOCAL" ] || [ -z "$REMOTE" ]; then
+    echo -e "${RED}✗ Could not check for updates${RESET}"
+    echo "Your installation may not be properly set up with git."
+    exit 1
+fi
 
 if [ "$LOCAL" = "$REMOTE" ]; then
     echo -e "${GREEN}✓ ClaudeStrike is already up to date!${RESET}"
@@ -59,7 +65,43 @@ if [ "$LOCAL" = "$REMOTE" ]; then
     echo -e "${BLUE}Verifying installation...${RESET}"
 else
     echo -e "${YELLOW}Updates available. Pulling changes...${RESET}"
-    git pull origin main || git pull origin master
+    
+    # Stash any local changes
+    if ! git diff-index --quiet HEAD --; then
+        echo -e "${YELLOW}Stashing local changes...${RESET}"
+        git stash push -m "ClaudeStrike auto-stash before update"
+        STASHED=true
+    else
+        STASHED=false
+    fi
+    
+    # Pull updates
+    if git pull origin main 2>/dev/null || git pull origin master 2>/dev/null; then
+        echo -e "${GREEN}✓ Updates downloaded successfully${RESET}"
+        
+        # Restore stashed changes if any
+        if [ "$STASHED" = true ]; then
+            echo -e "${YELLOW}Restoring your local changes...${RESET}"
+            if git stash pop; then
+                echo -e "${GREEN}✓ Local changes restored${RESET}"
+                echo -e "${YELLOW}Note: Review any merge conflicts if present${RESET}"
+            else
+                echo -e "${RED}⚠ Could not restore local changes automatically${RESET}"
+                echo -e "${YELLOW}Your changes are saved in: git stash list${RESET}"
+                echo -e "${YELLOW}To restore manually: git stash pop${RESET}"
+            fi
+        fi
+    else
+        echo -e "${RED}✗ Update failed${RESET}"
+        
+        # Restore stashed changes
+        if [ "$STASHED" = true ]; then
+            git stash pop
+        fi
+        
+        echo "Check logs above for details"
+        exit 1
+    fi
 fi
 
 # Recreate virtual environment
